@@ -8,6 +8,7 @@ public class Hospital {
     String name = "";
     ArrayList<Doctor> doctorList = new ArrayList<Doctor>();
     ArrayList<Patient> patientList;
+    ArrayList<Patient> patientsToBeReleased = new ArrayList<Patient>();
     Scanner scan = new Scanner(System.in);
 
     public Hospital (){
@@ -44,11 +45,19 @@ public class Hospital {
         for (int patientCounter = 0; patientCounter < patientList.size(); patientCounter++){
             for(int DocCounter = 0;DocCounter < doctorList.size(); DocCounter++){
                 if (doctorList.get(DocCounter).treatIllness(patientList.get(patientCounter))){
-                    releasePatient(patientList.get(patientCounter));
+                    patientsToBeReleased.add(patientList.get(patientCounter));
+                }
+            }
+        }
+        for (int patientCounter = 0; patientCounter < patientsToBeReleased.size(); patientCounter++){
+            for (int patientCounter2 = 0; patientCounter2 < patientList.size(); patientCounter2++){
+                if(patientList.get(patientCounter2) == patientsToBeReleased.get(patientCounter)){
+                    patientList.remove(patientCounter2);
                 }
             }
         }
     }
+
 
     public String getName() {
         return name;

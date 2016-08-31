@@ -6,6 +6,7 @@ import java.util.Scanner;
 public class Patient implements GetsSick {
     String name = "";
     int disease = -1;
+    boolean isTreated = false;
     public Patient(){
         Scanner scan = new Scanner(System.in);
         System.out.println("Name this patient");
@@ -13,6 +14,14 @@ public class Patient implements GetsSick {
         System.out.println("what disease does this patient have?\n1- Common cold\n2- Heart failure\n3- Lung cancer");
         int diseaseChoice = Integer.valueOf(scan.nextLine());
         setDisease(diseaseChoice);
+    }
+
+    public boolean isTreated() {
+        return isTreated;
+    }
+
+    public void setTreated(boolean treated) {
+        isTreated = treated;
     }
 
     public String getName() {

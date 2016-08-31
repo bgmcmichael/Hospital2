@@ -10,10 +10,9 @@ public class HeartDoc extends Doctor {
     @Override
     public boolean treatIllness(Patient thisPatient) {
         if (thisPatient.getDisease() == getIllnessToCure()){
+            thisPatient.setTreated(true);
             System.out.println(getName() + " was able to treat " + thisPatient.getName() + "'s Heart failure.");
             return true;
-        } else {
-            System.out.println(getName() + " wasn't able to treat the illness");
         }
         return false;
     }
